@@ -1,2 +1,2 @@
-cw2
+courseWork 2
 ===
