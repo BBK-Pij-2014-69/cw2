@@ -5,13 +5,18 @@ public class FractionTest {
     public static void main(String[] args) {
 
         // test divide by zero - should print an error and exit
-        new Fraction(1, 0);
-        // test multiply
+        new Fraction(11,10);
 	Fraction f = new Fraction(3,10);
+	Fraction a = new Fraction(11,10);
+	Fraction s = new Fraction(1,10);
+	Fraction d = new Fraction(5,6);
 	Fraction g = new Fraction(1,2);
 	Fraction h = new Fraction(3,5);
-	if (!f.equals(g.multiply(h))) System.out.println("Multiply failed");
-        // test equals
+	if (!f.equals(g.multiply(h))) System.out.println("Multiply failed");// test Multiply
+        if (!a.equals(g.add(h))) System.out.println("Add failed");// test add
+        if (!s.equals(g.subtract(h))) System.out.println("Subtract failed");// test subtract
+        if (!d.equals(g.divide(h))) System.out.println("divide failed");// test add
+        //test equals
 	test(new Fraction(1, 2),new Fraction(1, 2),"error test 1");
 	test(new Fraction(1, 2),new Fraction(3, 6),"error test 2");
 	test(new Fraction(-1, 2),new Fraction(1, -2),"error test 3");

@@ -1,6 +1,4 @@
-/**
- * Created by keith for the second coursework assignment.
- */
+
 public class Fraction {
     private int numerator;
     private int denominator;
@@ -63,7 +61,29 @@ public class Fraction {
         int denom = this.getDenominator() * other.getDenominator();
         return new Fraction(num, denom);
     }
+    
+    public Fraction add(Fraction other) {
+	    
+	int num = (this.getNumerator() * other.getDenominator()) + (this.getDenominator() * other.getNumerator());
+	int denom = this.getDenominator() * other.getDenominator();
+        return new Fraction(num, denom);
+    }
+    
+    public Fraction subtract(Fraction other) {
+    	    
+    	int num = Math.abs((this.getNumerator() * other.getDenominator()) - (this.getDenominator() * other.getNumerator()));
+    	int denom = this.getDenominator() * other.getDenominator();
+        return new Fraction(num, denom);
+    }
 
+    
+    public Fraction divide(Fraction other) {
+    
+         int num = this.getNumerator() * other.getDenominator();
+         int denom = this.getDenominator() * other.getNumerator();
+         return new Fraction(num, denom);
+    }
+    
     private int myGcd(int a, int b) {
         while (b != 0) {
             int t = b;
