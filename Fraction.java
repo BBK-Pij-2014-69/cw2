@@ -88,8 +88,8 @@ public class Fraction {
          return new Fraction(num, denom);
     }
     
-    public double absValue(Fraction other) {
-	 double a = other.getNumerator() / other.getDenominator();
+    public double absValue() {
+	 double a = (double)this.getNumerator() / (double)this.getDenominator();
 	 return a;
     }
     
