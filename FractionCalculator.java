@@ -1,5 +1,5 @@
 public class FractionCalculator{
-	public char operator = ' ';
+	private char operator = ' ';
 	
 	public static void main(String[] args) {
 		FractionCalculator myCalculator = new FractionCalculator();
@@ -12,7 +12,7 @@ public class FractionCalculator{
 		System.out.println ("Enter q, Q or quit to exit the program");
 		Fraction calculatorValue = new Fraction(0,1);
 		String function = "";
-		while (!function.equals("q") || !function.equals("Q") || !function.equals("quit")){
+		while (!(function.equals("q") || function.equals("Q") || function.equals("quit"))){
 			System.out.println("Calculator Value: " + calculatorValue.toString());
 			System.out.print("please enter text: ");
 			function = System.console().readLine();
@@ -22,15 +22,23 @@ public class FractionCalculator{
 				calculatorValue = new Fraction(0,1);
 			}else if (function.equals("q") || function.equals("Q") || function.equals("quit")){
 				System.out.println("GoodBye!");
-				System.exit(0);
 			}else if (function.equals("a") || function.equals("A") || function.equals("abs")){
 				System.out.println("Absolute Value: " + calculatorValue.absValue());
 			}else if (function.equals("/") || function.equals("*") || function.equals("-") || function.equals("+")){
-				myCalculator.operator = function.charAt(0);
+				if (function.charAt(0) != ' '){
+					System.out.println ("Error, two consecutive operators found");
+					calculatorValue = new Fraction(0,1);
+				}else{
+					myCalculator.operator = function.charAt(0);
+				}
+			}else if (function.equals("")){
+				System.out.println ("Error, no input found");
+				calculatorValue = new Fraction(0,1);
 			}else{
 				calculatorValue = myCalculator.evaluate(calculatorValue,function);
 			}
 		}
+		System.exit(0);
 	}
 	
 	public Fraction evaluate(Fraction fraction,String inputString){
@@ -44,6 +52,10 @@ public class FractionCalculator{
 			if ((count > 0) && (inputString.indexOf(' ') != -1)){
 				operator = inputString.charAt(inputString.indexOf(' ')+1);
 				inputString = inputString.substring(inputString.indexOf(' ')+3);
+			}
+			if (inputString.charAt(0) == '+' || inputString.charAt(0) == '*' || inputString.charAt(0) == '-' || inputString.charAt(0) == '/'){
+				System.out.println ("Error, two consecutive operators found");
+				return new Fraction(0,1);
 			}
 			//checks whether single fraction or multiple fractions
 			if (inputString.indexOf(' ') != -1){
@@ -74,7 +86,7 @@ public class FractionCalculator{
 			fraction = temp;
 			count ++;//used to stop the operator from being changed on first iteration
 		}while (!finished);
-		operator = ' ';//resests the operator
+		operator = ' ';//resets the operator
 		return temp;
 	}
 }
