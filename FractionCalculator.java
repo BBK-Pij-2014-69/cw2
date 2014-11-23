@@ -25,7 +25,7 @@ public class FractionCalculator{
 			}else if (function.equals("a") || function.equals("A") || function.equals("abs")){
 				System.out.println("Absolute Value: " + calculatorValue.absValue());
 			}else if (function.equals("/") || function.equals("*") || function.equals("-") || function.equals("+")){
-				if (function.charAt(0) != ' '){
+				if (myCalculator.operator != ' '){
 					System.out.println ("Error, two consecutive operators found");
 					calculatorValue = new Fraction(0,1);
 				}else{
